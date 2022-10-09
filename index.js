@@ -4,6 +4,7 @@ const inputBtn = document.getElementById("input-btn")
 const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-el")
 const deleteBtn = document.getElementById("delete-btn")
+const tabBtn = document.getElementById("tab-btn")
 const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
 
 
@@ -12,6 +13,16 @@ if (leadsFromLocalStorage) {
     myLeads = leadsFromLocalStorage
     render(myLeads)
 }
+
+
+const tab = [
+    {url: "https://www.linkedin.com/in/swagam-dasgupta-18a36a10b/"}
+]
+
+tabBtn.addEventListener("click", function(){
+    console.log(tab[0].url)
+})
+
 
 // Render all leads as unordered list
 function render(leads){
