@@ -5,7 +5,13 @@ const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-el")
 
 inputBtn.addEventListener("click", function(){
+    // Push input content to myLeads array
     myLeads.push(inputEl.value)
+
+    // Clear input field after button click
+    inputEl.value = ""
+
+    // Call render list function
     renderLeads()
 })
 
@@ -13,7 +19,7 @@ inputBtn.addEventListener("click", function(){
 function renderLeads(){
     let listItems = ""
     for (let i = 0; i < myLeads.length; i++) {
-        listItems += "<li>" + myLeads[i] + "</li>"
+        listItems += "<li>" + "<a href=myLeads[i] target='_blank'>" + myLeads[i] + "</a>" + "</li>"
         // Another way to add html to parent element
         //create + add text + append to parent (given below)
         // const li = document.createElement("li")
