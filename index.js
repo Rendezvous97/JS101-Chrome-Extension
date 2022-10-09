@@ -3,7 +3,8 @@ let myLeads = []
 const inputBtn = document.getElementById("input-btn")
 const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-el")
-let leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
+const deleteBtn = document.getElementById("delete-btn")
+const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
 
 
 // Check if local storage has truthy value inside and if so add to myLeads array
@@ -11,6 +12,13 @@ if (leadsFromLocalStorage) {
     myLeads = leadsFromLocalStorage
     renderLeads()
 }
+
+// Delet all—listen for double click then clear local storage, myLeads array and DOM
+deleteBtn.addEventListener("dblclick", function() {
+    localStorage.clear()
+    myLeads = []
+    renderLeads()
+})
 
 
 inputBtn.addEventListener("click", function(){
