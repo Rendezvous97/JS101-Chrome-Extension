@@ -10,14 +10,40 @@ const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
 // Check if local storage has truthy value inside and if so add to myLeads array
 if (leadsFromLocalStorage) {
     myLeads = leadsFromLocalStorage
-    renderLeads()
+    render(myLeads)
 }
+
+// Render all leads as unordered list
+function render(leads){
+    let listItems = ""
+    for (let i = 0; i < leads.length; i++) {
+        
+        // listItems += "<li><a target='_blank' href='" + myLeads[i] + "'>" + myLeads[i] + "</a></li>"
+        // Instead of the above we will use template strings
+
+        listItems += `
+            <li>
+                <a target='_blank' href='${leads[i]}'>
+                    ${leads[i]}
+                </a>
+            </li>`
+    
+        // Another way to add html to parent element
+        //create + add text + append to parent (given below)
+        // const li = document.createElement("li")
+        // li.textContent = myLeads[i]
+        // ulEl.append(li)
+    }
+
+    ulEl.innerHTML = listItems
+}
+
 
 // Delet all—listen for double click then clear local storage, myLeads array and DOM
 deleteBtn.addEventListener("dblclick", function() {
     localStorage.clear()
     myLeads = []
-    renderLeads()
+    render(myLeads)
 })
 
 
@@ -32,30 +58,6 @@ inputBtn.addEventListener("click", function(){
     localStorage.setItem("myLeads", JSON.stringify(myLeads) )
 
     // Call render list function
-    renderLeads()
+    render(myLeads)
 })
 
-
-function renderLeads(){
-    let listItems = ""
-    for (let i = 0; i < myLeads.length; i++) {
-        
-        // listItems += "<li><a target='_blank' href='" + myLeads[i] + "'>" + myLeads[i] + "</a></li>"
-        // Instead of the above we will use template strings
-
-        listItems += `
-            <li>
-                <a target='_blank' href='${myLeads[i]}'>
-                    ${myLeads[i]}
-                </a>
-            </li>`
-    
-        // Another way to add html to parent element
-        //create + add text + append to parent (given below)
-        // const li = document.createElement("li")
-        // li.textContent = myLeads[i]
-        // ulEl.append(li)
-    }
-
-    ulEl.innerHTML = listItems
-}
