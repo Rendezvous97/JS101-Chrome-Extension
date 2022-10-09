@@ -3,6 +3,15 @@ let myLeads = []
 const inputBtn = document.getElementById("input-btn")
 const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-el")
+let leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
+
+
+// Check if local storage has truthy value inside and if so add to myLeads array
+if (leadsFromLocalStorage) {
+    myLeads = leadsFromLocalStorage
+    renderLeads()
+}
+
 
 inputBtn.addEventListener("click", function(){
     // Push input content to myLeads array
@@ -10,6 +19,9 @@ inputBtn.addEventListener("click", function(){
 
     // Clear input field after button click
     inputEl.value = ""
+
+    // Saving the new lead in local storage
+    localStorage.setItem("myLeads", JSON.stringify(myLeads) )
 
     // Call render list function
     renderLeads()
@@ -30,9 +42,6 @@ function renderLeads(){
                 </a>
             </li>`
     
-        
-        
-        
         // Another way to add html to parent element
         //create + add text + append to parent (given below)
         // const li = document.createElement("li")
