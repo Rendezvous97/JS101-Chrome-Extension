@@ -5,7 +5,7 @@ const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-el")
 const deleteBtn = document.getElementById("delete-btn")
 const tabBtn = document.getElementById("tab-btn")
-const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )\
+const leadsFromLocalStorage = JSON.parse( localStorage.getItem("myLeads") )
 
 
 // Check if local storage has truthy value inside and if so add to myLeads array
