@@ -19,7 +19,7 @@ inputBtn.addEventListener("click", function(){
 function renderLeads(){
     let listItems = ""
     for (let i = 0; i < myLeads.length; i++) {
-        listItems += "<li>" + "<a href=myLeads[i] target='_blank'>" + myLeads[i] + "</a>" + "</li>"
+        listItems += "<li><a target='_blank' href='" + myLeads[i] + "'>" + myLeads[i] + "</a></li>"
         // Another way to add html to parent element
         //create + add text + append to parent (given below)
         // const li = document.createElement("li")
